@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <title>汽车行驶刹车动画</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background: #f0f2f5;
+            position: relative;
+        }
+
+        .car {
+            width: 180px;
+            height: 120px;
+            background-image: url("https://tse4-mm.cn.bing.net/th/id/OIP-C.hXY_P5A-aFPhhGASiWTbhwHaE7?w=257&h=180&c=7&r=0&o=7&dpr=2&pid=1.7&rm=3");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: absolute;
+
+            /* 动画：行驶 + 刹车 */
+            animation: carDrive 5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes carDrive {
+            /* 起点：右上角 */
+            0% {
+                top: 50px;
+                right: 50px;
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            /* 快到终点：左下角 */
+            85% {
+                top: calc(100vh - 170px);
+                right: calc(100vw - 230px);
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            /* 刹车抖动 */
+            88% {
+                transform: rotate(-2.5deg);
+            }
+            91% {
+                transform: rotate(2.5deg);
+            }
+            94% {
+                transform: rotate(-1.5deg);
+            }
+            97% {
+                transform: rotate(1.5deg);
+            }
+
+            /* 停稳 */
+            100% {
+                top: calc(100vh - 170px);
+                right: calc(100vw - 230px);
+                transform: rotate(0deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="car"></div>
+</body>
+</html>
